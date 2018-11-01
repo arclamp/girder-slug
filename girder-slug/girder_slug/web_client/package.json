@@ -1,0 +1,12 @@
+{
+    "name": "@girder/girder_slug",
+    "version": "0.1.0",
+    "private": true,
+    "description": "A Girder plugin to enable slugs for Collections, Folders, and Items",
+    "homepage": "https://github.com/arclamp/girder-slug",
+    "license": "Apache-2.0",
+    "girderPlugin": {
+        "name": "girder_slug",
+        "main": "./main.js"
+    }
+}
