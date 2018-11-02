@@ -12,7 +12,7 @@ _slugSchema = {
         'type': 'object',
         'properties': {
             'resourceType': {
-                'enum': ['Collection', 'Folder', 'Item'],
+                'enum': ['collection', 'folder', 'item'],
             },
             'girderID': {
                 'type': 'string',
