@@ -1,0 +1,48 @@
+.g-config-breadcrumb-container
+
+p.g-slug-description.
+  The Slug plugin enables creating slugs for specific Collections, Folders, and
+  Items. Simply specify the resource type and Girder ID, and supply a slug, and
+  the resource will appear at #[tt /#slug/your-slug-here].
+
+.g-slug-container
+  table.table.table-hover
+    thead
+      tr
+        th Resource Type
+        th Girder ID
+        th Slug
+        th
+    tbody
+      if !slugs.length
+        tr
+          td.g-slug-empty(colspan=4) No slugs defined.
+      each slug, index in slugs
+        tr
+          td= slug.resourceType
+          td= slug.girderID
+          td= slug.slug
+          td
+            button.g-slug-remove.btn.btn-xs.btn-danger(title="Remove rule", data-index=index)
+              i.icon-cancel
+    tfoot
+      tr
+        td
+          select#g-slug-resource-type.form-control.input-sm
+            option(value='') (Select type)
+            option(value='Collection') Collection
+            option(value='Folder') Folder
+            option(value='Item') Item
+        td
+          input#g-slug-girder-id.form-control.input-sm(placeholder="Enter Girder ID")
+        td
+          input#g-slug-slug.form-control.input-sm(placeholder="Enter Slug")
+        td
+          button#g-slug-add.btn.btn-xs.btn-primary(title="Add slug")
+            i.icon-plus
+
+p#g-slug-error-message.g-validation-failed-message
+
+.g-slug-buttons
+  button#g-slug-save.btn.btn-sm.btn-primary Save Changes
+  button#g-slug-cancel.btn.btn-sm.btn-default Cancel
