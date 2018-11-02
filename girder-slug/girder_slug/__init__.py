@@ -30,10 +30,32 @@ _slugSchema = {
 
 @utility.setting_utilities.validator('slug')
 def validateSettings(doc):
+    # Validate to the schema.
     try:
         jsonschema.validate(doc['value'], _slugSchema)
     except jsonschema.ValidationError as e:
         raise ValidationException('Invalid slug: ' + e.message)
+
+    # Look for duplicate entries (either in resources or slugs).
+    resources = set()
+    slugs = set()
+
+    dups = {'resources': set(), 'slugs': set()}
+    for slug in doc['value']:
+        if slug['girderID'] in resources:
+            dups['resources'].add(slug['girderID'])
+
+        if slug['slug'] in slugs:
+            dups['slugs'].add(slug['slug'])
+
+        resources.add(slug['girderID'])
+        slugs.add(slug['slug'])
+
+    if dups['resources']:
+        raise ValidationException('Duplicate resources: ' + str(list(dups['resources'])))
+
+    if dups['slugs']:
+        raise ValidationException('Duplicate slugs: ' + str(list(dups['slugs'])))
 
 
 class GirderPlugin(plugin.GirderPlugin):
