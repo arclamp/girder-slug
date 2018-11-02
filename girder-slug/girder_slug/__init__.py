@@ -16,11 +16,11 @@ _slugSchema = {
             },
             'girderID': {
                 'type': 'string',
-                'pattern': '[0-9a-f]{16}'
+                'pattern': '^[0-9a-f]{24}$'
             },
             'slug': {
                 'type': 'string',
-                'pattern': '[a-zA-Z0-9-]{1,128}'
+                'pattern': '^[a-zA-Z0-9-]{1,128}$'
             }
         },
         'required': ['resourceType', 'girderID', 'slug']
