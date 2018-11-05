@@ -5,7 +5,7 @@ import { restRequest } from 'girder/rest';
 
 import ConfigView from './views/ConfigView';
 
-exposePluginConfig('slug', 'plugins/slug/config');
+exposePluginConfig('girder_slug', 'plugins/slug/config');
 
 router.route('slug/:id', 'slug', function (slug, params) {
   const hash = window.location.hash;
