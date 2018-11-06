@@ -12,10 +12,7 @@ router.route('slug/:id', 'slug', function (slug, params) {
 
   restRequest({
     method: 'GET',
-    url: 'system/setting',
-    data: {
-      list: JSON.stringify(['slug'])
-    }
+    url: 'slug/setting'
   }).done((resp) => {
     const slugs = resp['slug'] || [];
     const slugSpec = slugs.filter(d => d.slug === slug)[0];

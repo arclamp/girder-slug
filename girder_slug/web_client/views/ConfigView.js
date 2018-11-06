@@ -53,10 +53,7 @@ var ConfigView = View.extend({
 
         restRequest({
             method: 'GET',
-            url: 'system/setting',
-            data: {
-                list: JSON.stringify(['slug'])
-            }
+            url: 'slug/setting'
         }).done((resp) => {
             this.slugs = resp['slug'] || [];
             this.render();

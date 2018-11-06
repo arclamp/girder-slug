@@ -8,6 +8,8 @@ from girder.models.collection import Collection
 from girder.models.folder import Folder
 from girder.models.item import Item
 
+import rest
+
 
 _slugSchema = {
     'type': 'array',
@@ -87,5 +89,5 @@ class GirderPlugin(plugin.GirderPlugin):
     CLIENT_SOURCE_PATH = 'web_client'
 
     def load(self, info):
-        # add plugin loading logic here
-        pass
+        apiRoot = info['apiRoot']
+        apiRoot.slug = rest.Slug(apiRoot.system.getSetting)
