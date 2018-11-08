@@ -18,9 +18,7 @@ router.route('slug/:id', 'slug', function (slug, params) {
     const slugSpec = slugs.filter(d => d.slug === slug)[0];
 
     if (slugSpec) {
-      const url = `#${slugSpec.resourceType}/${slugSpec.girderID}`;
-      console.log(url);
-      router.navigate(url, {
+      router.navigate(`#${slugSpec.resourceType}/${slugSpec.girderID}`, {
         trigger: true,
         replace: true
       });
